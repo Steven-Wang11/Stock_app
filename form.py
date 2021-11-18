@@ -8,6 +8,7 @@ window.title('window')
 window.geometry("1280x720+800+600")
 # command
 ##########################
+# 布局grid
 def define_layout(obj, cols=1, rows=1):
     def method(trg, col, row):
 
@@ -21,13 +22,14 @@ def define_layout(obj, cols=1, rows=1):
     else:
         method(obj, cols, rows)
 
+# entry text is numeric only
 def validate(P):
     if str.isdigit(P) or P == '':
         return True
     else:
         return False
 
-
+# output the result after clicked the button
 def output():
     msg = entry.get()
     if msg == '':
@@ -58,7 +60,7 @@ label_info = tk.Label(div2, textvariable=stock_info, bg='#d6b220', font=30)
 label_info.grid(column=0, row=0, sticky=align_mode)
 
 
-label_input = tk.Label(div3, text='請輸入股票編號', font=20)
+label_input = tk.Label(div3, text='請輸入股票編號', font=20) # entry hint
 label_input.grid(column=0, row=0, sticky=align_mode)
 
 vcmd = (div3.register(validate), '%P')
@@ -69,8 +71,8 @@ bt1 = tk.Button(div3,width = 20, text='OK', bg='#4287f5',activebackground='#1432
 bt1.grid(column=0, row=2)
 
 
-define_layout(window, 2, 2)
-define_layout(div1)
+define_layout(window, 2, 2) # 布局兩個主要grid(2x2)
+define_layout(div1) # div1(左邊)
 define_layout(div2, rows=1)
 define_layout(div3, rows=3)
 
